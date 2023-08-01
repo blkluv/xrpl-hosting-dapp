@@ -17,7 +17,7 @@ body {
   align-items: center;
   justify-content: center;
   color: white;
-  background-image: url('your-image-url.jpg'); /* Replace 'your-image-url.jpg' with your background image URL */
+  background-image: url('/11.jpg'); /* Replace 'your-image-url.jpg' with your background image URL */
   background-size: cover; /* Scale the background image to cover the entire header */
   background-position: center; /* Center the background image vertically and horizontally */
   background-attachment: fixed; /* Make the background image fixed while scrolling */
@@ -81,4 +81,42 @@ body {
   to {
     transform: rotate(360deg);
   }
+}
+
+/* Additional styling */
+header {
+  padding: 20px;
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+header h1 {
+  font-size: 3rem;
+  margin-bottom: 20px;
+}
+
+nav ul {
+  list-style: none;
+  padding: 0;
+}
+
+nav li {
+  display: inline;
+  margin-right: 20px;
+}
+
+nav li:last-child {
+  margin-right: 0;
+}
+
+main {
+  padding: 40px;
+  background-color: #f9f9f9;
+  min-height: calc(100vh - 160px); /* Subtract header and footer heights */
+}
+
+footer {
+  padding: 20px 0;
+  background-color: #282c34;
+  color: white;
+  text-align: center;
 }
