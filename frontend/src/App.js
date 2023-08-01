@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+import { Routes, Route, Link } from 'react-router-dom';
+import 'bootstrap/dist/css/bootstrap.min.css'; // Import Bootstrap CSS
+import './App.css'; // Custom CSS file for additional styling
 
 const App = () => {
   const [user, setUser] = useState(null);
@@ -16,44 +18,44 @@ const App = () => {
   };
 
   return (
-    <Router>
-      <div className="App">
-        <header>
-          <h1>XRPL Hosting as a Service</h1>
-          {user ? (
-            <button onClick={handleLogout}>Logout</button>
-          ) : (
-            <button onClick={handleLogin}>Login</button>
-          )}
-        </header>
+    <div className="App">
+      <header>
+        <h1>XRPL Hosting as a Service</h1>
+        {user ? (
+          <button className="btn btn-danger" onClick={handleLogout}>
+            Logout
+          </button>
+        ) : (
+          <button className="btn btn-primary" onClick={handleLogin}>
+            Login
+          </button>
+        )}
+      </header>
 
-        <nav>
-          <ul>
-            <li>
-              <Link to="/">Home</Link>
-            </li>
-            <li>
-              <Link to="/purchase">Purchase</Link>
-            </li>
-            {/* Add more navigation links as needed */}
-          </ul>
-        </nav>
+      <nav>
+        <ul>
+          <li>
+            <Link to="/">Home</Link>
+          </li>
+          <li>
+            <Link to="/purchase">Purchase</Link>
+          </li>
+          {/* Add more navigation links as needed */}
+        </ul>
+      </nav>
 
-        <main>
-          <Route exact path="/">
-            <Home user={user} />
-          </Route>
-          <Route path="/purchase">
-            <Purchase user={user} />
-          </Route>
+      <main>
+        <Routes>
+          <Route path="/" element={<Home user={user} />} />
+          <Route path="/purchase" element={<Purchase user={user} />} />
           {/* Add more routes and components for other pages */}
-        </main>
+        </Routes>
+      </main>
 
-        <footer>
-          <p>Copyright © 2023 XRPL Hosting as a Service</p>
-        </footer>
-      </div>
-    </Router>
+      <footer>
+        <p>Copyright © 2023 XRPL Hosting as a Service</p>
+      </footer>
+    </div>
   );
 };
 
