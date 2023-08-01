@@ -19,8 +19,8 @@ const App = () => {
 
   return (
     <div className="App">
-      <header>
-        <h1>XRPL Hosting as a Service</h1>
+      <header className="App-header">
+        <h1>Yester</h1>
         {user ? (
           <button className="btn btn-danger" onClick={handleLogout}>
             Logout
@@ -32,7 +32,7 @@ const App = () => {
         )}
       </header>
 
-      <nav>
+      <nav className="App-nav">
         <ul>
           <li>
             <Link to="/">Home</Link>
@@ -44,7 +44,7 @@ const App = () => {
         </ul>
       </nav>
 
-      <main>
+      <main className="App-main">
         <Routes>
           <Route path="/" element={<Home user={user} />} />
           <Route path="/purchase" element={<Purchase user={user} />} />
@@ -52,8 +52,8 @@ const App = () => {
         </Routes>
       </main>
 
-      <footer>
-        <p>Copyright © 2023 XRPL Hosting as a Service</p>
+      <footer className="App-footer">
+        <p>Copyright © 2023 Yester - XRPL HAAS</p>
       </footer>
     </div>
   );
@@ -63,7 +63,7 @@ const App = () => {
 const Home = ({ user }) => {
   return (
     <div>
-      <h2>Welcome to XRPL Hosting as a Service</h2>
+      <h2>Welcome to XRPL Hosting</h2>
       {user ? (
         <p>Hello, {user.name}! You can now purchase instances and host XRPL hooks.</p>
       ) : (
