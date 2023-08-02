@@ -1,10 +1,26 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Routes, Route, Link } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css'; // Import Bootstrap CSS
 import './App.css'; // Custom CSS file for additional styling
+import GemWallet from '@gemwallet/api'; // Import the GemWallet API module
 
 const App = () => {
   const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    // Check if GemWallet extension is installed when the component mounts
+    checkGemWalletInstallation();
+  }, []);
+
+  // Function to check if GemWallet extension is installed
+  const checkGemWalletInstallation = async () => {
+    try {
+      const installed = await GemWallet.isInstalled(); // Call isInstalled() method
+      console.log('Is GemWallet installed?', installed);
+    } catch (error) {
+      console.error('Error checking GemWallet installation:', error);
+    }
+  };
 
   // Simulate user login and set user state
   const handleLogin = () => {
@@ -19,8 +35,8 @@ const App = () => {
 
   return (
     <div className="App">
-      <header className="App-header">
-        <h1>Yester</h1>
+      <header>
+        <h1>XRPL Hosting as a Service</h1>
         {user ? (
           <button className="btn btn-danger" onClick={handleLogout}>
             Logout
@@ -32,7 +48,7 @@ const App = () => {
         )}
       </header>
 
-      <nav className="App-nav">
+      <nav>
         <ul>
           <li>
             <Link to="/">Home</Link>
@@ -44,7 +60,7 @@ const App = () => {
         </ul>
       </nav>
 
-      <main className="App-main">
+      <main>
         <Routes>
           <Route path="/" element={<Home user={user} />} />
           <Route path="/purchase" element={<Purchase user={user} />} />
@@ -52,8 +68,8 @@ const App = () => {
         </Routes>
       </main>
 
-      <footer className="App-footer">
-        <p>Copyright © 2023 Yester - XRPL HAAS</p>
+      <footer>
+        <p>Copyright © 2023 XRPL Hosting as a Service</p>
       </footer>
     </div>
   );
@@ -63,7 +79,7 @@ const App = () => {
 const Home = ({ user }) => {
   return (
     <div>
-      <h2>Welcome to XRPL Hosting</h2>
+      <h2>Welcome to XRPL Hosting as a Service</h2>
       {user ? (
         <p>Hello, {user.name}! You can now purchase instances and host XRPL hooks.</p>
       ) : (
