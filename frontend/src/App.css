@@ -1,122 +1,95 @@
-/* Custom CSS for App.js */
-
-body {
-  margin: 0;
-  overflow-x: hidden; /* Hide horizontal scrollbar */
-  font-family: Arial, sans-serif; /* Change font family as needed */
-}
-
+/* App.css */
+/* Styles for the top fold */
 .App {
-  text-align: center;
-}
-
-.App-header {
-  height: 100vh; /* Set the header to take up the full viewport height */
+  position: relative;
+  top: 150px;
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
-  color: white;
-  background-image: url('/11.jpg'); /* Replace 'your-image-url.jpg' with your background image URL */
-  background-size: cover; /* Scale the background image to cover the entire header */
-  background-position: center; /* Center the background image vertically and horizontally */
-  background-attachment: fixed; /* Make the background image fixed while scrolling */
-  position: relative; /* Required for child elements to position correctly */
+  align-items: center;
+  box-sizing: border-box;
 }
 
-.App-header h1 {
-  font-size: 3rem;
-  margin-bottom: 20px;
+/* Styles for the button in the top fold */
+button.btn-primary {
+  font-size: 20px;
+  padding: 12px 24px;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-top: 20px;
 }
 
-.App-nav {
-  position: absolute;
-  bottom: 20px;
-  left: 50%;
-  transform: translateX(-50%);
+/* Styles for the full-width content area */
+.full-width-div {
+  background-color: #f8f8f8;
+  padding: 20px;
+  text-align: center;
 }
 
-.App-nav ul {
-  list-style: none;
-  padding: 0;
+/* Styles for the footer */
+footer {
+  background-color: #000000;
+  color: #fff;
+  width: 100%;
+  position: absolute; /* Change position to absolute to take full width */
+  bottom: 0;
+  left: 0;
+}
+
+/* Navigation Menu Styles */
+.menu-nav {
+  height: 55px;
+  background-color: #0380fd;
   display: flex;
   justify-content: center;
+  align-items: center;
 }
 
-.App-nav li {
-  margin-right: 20px;
-}
-
-.App-nav li:last-child {
-  margin-right: 0;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-.App-main {
-  padding: 40px;
-}
-
-.App-main p {
-  font-size: 1.2rem;
-  line-height: 1.6;
-}
-
-.App-footer {
-  padding: 20px 0;
-  background-color: #282c34;
-  color: white;
-}
-
-.App-footer p {
-  margin: 0;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-/* Additional styling */
-header {
-  padding: 20px;
-  background-color: rgba(0, 0, 0, 0.8);
-}
-
-header h1 {
-  font-size: 3rem;
-  margin-bottom: 20px;
-}
-
-nav ul {
+.menu-list {
   list-style: none;
+  display: flex;
+  margin: 0;
   padding: 0;
 }
 
-nav li {
-  display: inline;
+.menu-item {
   margin-right: 20px;
+  
 }
 
-nav li:last-child {
+.menu-item:last-child {
   margin-right: 0;
 }
 
-main {
-  padding: 40px;
-  background-color: #f9f9f9;
-  min-height: calc(100vh - 160px); /* Subtract header and footer heights */
+.menu-item a {
+  color: #fff;
+  text-decoration: none;
+  padding: 5px 10px;
+  transition: 0.3s;
 }
 
-footer {
-  padding: 20px 0;
-  background-color: #282c34;
-  color: white;
-  text-align: center;
+.menu-item a:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 5px;
+}
+
+/* User Profile Section Styles */
+.user-profile-section {
+  color: #fff;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  
+  margin-left: auto; /* Add this line to push the user profile section and logout button to the right */
+}
+
+/* Styles for the user profile image */
+.profile-image {
+  width: 32px;
+  height: 32px;
+}
+
+/* Add some space between menu items */
+.menu-item + .menu-item {
+  margin-left: 10px;
 }

@@ -1,109 +1,119 @@
+// App.js
 import React, { useState, useEffect } from 'react';
-import { Routes, Route, Link } from 'react-router-dom';
-import 'bootstrap/dist/css/bootstrap.min.css'; // Import Bootstrap CSS
-import './App.css'; // Custom CSS file for additional styling
-import GemWallet from '@gemwallet/api'; // Import the GemWallet API module
+import 'bootstrap/dist/css/bootstrap.min.css';
+import './App.css';
+import { isInstalled, getAddress } from '@gemwallet/api';
 
-const App = () => {
-  const [user, setUser] = useState(null);
+function App() {
+  const [gemWalletActive, setGemWalletActive] = useState(false);
+  const [walletAddress, setWalletAddress] = useState('');
+
+  const handleConnect = () => {
+    isInstalled().then((response) => {
+      if (response.result.isInstalled) {
+        getAddress().then((response) => {
+          console.log(`Your address: ${response.result?.address}`);
+          setWalletAddress(response.result?.address);
+          setGemWalletActive(true);
+        });
+      }
+    });
+  };
+
+  const handleLogout = () => {
+    // Perform any logout actions here if needed
+    setGemWalletActive(false);
+    setWalletAddress('');
+  };
 
   useEffect(() => {
-    // Check if GemWallet extension is installed when the component mounts
-    checkGemWalletInstallation();
+    // Check if GemWallet is active on component mount
+    isInstalled().then((response) => {
+      setGemWalletActive(response.result.isInstalled);
+    });
   }, []);
 
-  // Function to check if GemWallet extension is installed
-  const checkGemWalletInstallation = async () => {
-    try {
-      const installed = await GemWallet.isInstalled(); // Call isInstalled() method
-      console.log('Is GemWallet installed?', installed);
-    } catch (error) {
-      console.error('Error checking GemWallet installation:', error);
-    }
-  };
+  const instances = [
+    { name: 'Small', price: 10 },
+    { name: 'Medium', price: 20 },
+    { name: 'Large', price: 30 },
+  ];
 
-  // Simulate user login and set user state
-  const handleLogin = () => {
-    const mockUser = { id: 123, name: 'John Doe' };
-    setUser(mockUser);
-  };
-
-  // Simulate user logout and reset user state
-  const handleLogout = () => {
-    setUser(null);
+  // Helper function to abbreviate the wallet address
+  const abbreviateAddress = (address) => {
+    if (!address) return '';
+    const firstPart = address.substring(0, 6);
+    const lastPart = address.substring(address.length - 4);
+    return `${firstPart}...${lastPart}`;
   };
 
   return (
-    <div className="App">
-      <header>
-        <h1>XRPL Hosting as a Service</h1>
-        {user ? (
-          <button className="btn btn-danger" onClick={handleLogout}>
-            Logout
+    <div className="App d-flex flex-column justify-content-between">
+      {/* Top Fold */}
+      <div className="d-flex flex-column align-items-center mt-5">
+        <h1>Yester</h1>
+        {!gemWalletActive ? (
+          <button onClick={handleConnect} className="btn btn-primary mt-4">
+            Connect with GemWallet
           </button>
         ) : (
-          <button className="btn btn-primary" onClick={handleLogin}>
-            Login
-          </button>
+          // Show the main content when GemWallet is active
+          <div className="full-width-div">
+            <div className="container">
+              <div className="row justify-content-center">
+                <div className="col-md-12">
+                  <h2>Support Evernodes!</h2>
+                  <p>We are selling the following instances:</p>
+                  <ul>
+                    {instances.map((instance) => (
+                      <li key={instance.name}>
+                        {instance.name}: ${instance.price}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
         )}
-      </header>
+      </div>
 
-      <nav>
-        <ul>
-          <li>
-            <Link to="/">Home</Link>
-          </li>
-          <li>
-            <Link to="/purchase">Purchase</Link>
-          </li>
-          {/* Add more navigation links as needed */}
-        </ul>
-      </nav>
-
-      <main>
-        <Routes>
-          <Route path="/" element={<Home user={user} />} />
-          <Route path="/purchase" element={<Purchase user={user} />} />
-          {/* Add more routes and components for other pages */}
-        </Routes>
-      </main>
-
-      <footer>
-        <p>Copyright © 2023 XRPL Hosting as a Service</p>
+      {/* Footer */}
+      <footer className="bg-dark text-white text-center py-2 fixed-bottom" style={{ height: '60px' }}>
+        {/* Navigation Menu */}
+        <nav className="menu-nav">
+          <ul className="menu-list">
+            <li className="menu-item">
+              <a href="#about">About</a>
+            </li>
+            <li className="menu-item">
+              <a href="#docs">Docs</a>
+            </li>
+            <li className="menu-item">
+              <a href="https://github.com/your-repo" target="_blank" rel="noopener noreferrer">
+                GitHub
+              </a>
+            </li>
+            {gemWalletActive && (
+              <li className="menu-item">
+                <div className="user-profile-section d-flex align-items-center">
+                  <img
+                    src="user-image.png" // Replace with the URL of your default profile image
+                    alt="User Profile"
+                    className="rounded-circle profile-image"
+                  />
+                  <div className="ml-2">wallet: {abbreviateAddress(walletAddress)}</div>
+                  <button onClick={handleLogout} className="btn btn-outline-light ml-2">
+                    Logout
+                  </button>
+                </div>
+              </li>
+            )}
+          </ul>
+        </nav>
       </footer>
     </div>
   );
-};
-
-// Home component to display content based on user authentication
-const Home = ({ user }) => {
-  return (
-    <div>
-      <h2>Welcome to XRPL Hosting as a Service</h2>
-      {user ? (
-        <p>Hello, {user.name}! You can now purchase instances and host XRPL hooks.</p>
-      ) : (
-        <p>Please login to access XRPL hosting services.</p>
-      )}
-    </div>
-  );
-};
-
-// Purchase component for users to buy instances/servers
-const Purchase = ({ user }) => {
-  return (
-    <div>
-      <h2>Purchase Instances</h2>
-      {user ? (
-        <>
-          <p>Hello, {user.name}! Choose your desired instance and make a purchase.</p>
-          {/* Add instance selection and payment processing components */}
-        </>
-      ) : (
-        <p>Please login to purchase instances.</p>
-      )}
-    </div>
-  );
-};
+}
 
 export default App;
