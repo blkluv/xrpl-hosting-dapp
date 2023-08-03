@@ -1,8 +1,11 @@
-// App.js
 import React, { useState, useEffect } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 import { isInstalled, getAddress } from '@gemwallet/api';
+import Container from 'react-bootstrap/Container';
+import Navbar from 'react-bootstrap/Navbar';
+import Nav from 'react-bootstrap/Nav'; // Add this line to import the Nav component
+
 
 function App() {
   const [gemWalletActive, setGemWalletActive] = useState(false);
@@ -81,36 +84,43 @@ function App() {
       {/* Footer */}
       <footer className="bg-dark text-white text-center py-2 fixed-bottom" style={{ height: '60px' }}>
         {/* Navigation Menu */}
-        <nav className="menu-nav">
-          <ul className="menu-list">
-            <li className="menu-item">
-              <a href="#about">About</a>
-            </li>
-            <li className="menu-item">
-              <a href="#docs">Docs</a>
-            </li>
-            <li className="menu-item">
-              <a href="https://github.com/your-repo" target="_blank" rel="noopener noreferrer">
+        <Navbar className="bg-body-tertiary">
+          <Container>
+            <Navbar.Brand href="#home">
+              <img
+                alt=""
+                src="/img/logo.svg" // Replace with the URL of your logo image
+                width="30"
+                height="30"
+                className="d-inline-block align-top"
+              />{' '}
+              Yester
+            </Navbar.Brand>
+            <Nav className="ml-auto">
+              <Nav.Link href="#about">About</Nav.Link>
+              <Nav.Link href="#docs">Docs</Nav.Link>
+              <Nav.Link href="https://github.com/your-repo" target="_blank" rel="noopener noreferrer">
                 GitHub
-              </a>
-            </li>
+              </Nav.Link>
+              {gemWalletActive && (
+                <Nav.Link href="#user-profile">User Profile</Nav.Link>
+              )}
+            </Nav>
             {gemWalletActive && (
-              <li className="menu-item">
-                <div className="user-profile-section d-flex align-items-center">
-                  <img
-                    src="user-image.png" // Replace with the URL of your default profile image
-                    alt="User Profile"
-                    className="rounded-circle profile-image"
-                  />
-                  <div className="ml-2">wallet: {abbreviateAddress(walletAddress)}</div>
-                  <button onClick={handleLogout} className="btn btn-outline-light ml-2">
-                    Logout
-                  </button>
-                </div>
-              </li>
+              <div className="user-profile-section d-flex align-items-center">
+                <img
+                  src="user-image.png" // Replace with the URL of your default profile image
+                  alt="User Profile"
+                  className="rounded-circle profile-image"
+                />
+                <div className="ml-2">Logged in as: {abbreviateAddress(walletAddress)}</div>
+                <button onClick={handleLogout} className="btn btn-outline-light ml-2">
+                  Logout
+                </button>
+              </div>
             )}
-          </ul>
-        </nav>
+          </Container>
+        </Navbar>
       </footer>
     </div>
   );
