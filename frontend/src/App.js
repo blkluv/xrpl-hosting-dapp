@@ -99,7 +99,7 @@ function App() {
               <Nav.Link href="#about">About</Nav.Link>
               <Nav.Link href="#docs">Docs</Nav.Link>
               <Nav.Link href="https://github.com/your-repo" target="_blank" rel="noopener noreferrer">
-                GitHub
+                GitHu
               </Nav.Link>
             </Nav>
             {gemWalletActive && (
