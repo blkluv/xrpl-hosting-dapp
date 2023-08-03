@@ -4,8 +4,7 @@ import './App.css';
 import { isInstalled, getAddress } from '@gemwallet/api';
 import Container from 'react-bootstrap/Container';
 import Navbar from 'react-bootstrap/Navbar';
-import Nav from 'react-bootstrap/Nav'; // Add this line to import the Nav component
-
+import Nav from 'react-bootstrap/Nav';
 
 function App() {
   const [gemWalletActive, setGemWalletActive] = useState(false);
@@ -82,14 +81,14 @@ function App() {
       </div>
 
       {/* Footer */}
-      <footer className="bg-dark text-white text-center py-2 fixed-bottom" style={{ height: '60px' }}>
+      <footer className="bg-primary text-white text-center py-2 fixed-bottom" style={{ height: '60px' }}>
         {/* Navigation Menu */}
-        <Navbar className="bg-body-tertiary bnav">
+        <Navbar className="bg-secondary bnav justify-content-center"> {/* Add justify-content-center class here */}
           <Container>
             <Navbar.Brand href="#home">
               <img
-                alt="logo"
-                src="xrpllogo.png" // Replace with the URL of your logo image
+                src="xrplogo.png" // Replace with the URL of your logo image
+                alt=''
                 width="30"
                 height="30"
                 className="d-inline-block align-top"
@@ -102,19 +101,16 @@ function App() {
               <Nav.Link href="https://github.com/your-repo" target="_blank" rel="noopener noreferrer">
                 GitHub
               </Nav.Link>
-              {gemWalletActive && (
-                <Nav.Link href="#user-profile">User Profile</Nav.Link>
-              )}
             </Nav>
             {gemWalletActive && (
               <div className="user-profile-section d-flex align-items-center">
                 <img
                   src="user-image.png" // Replace with the URL of your default profile image
-                  alt="User Profile"
+                  alt=""
                   className="rounded-circle profile-image"
                 />
-                <div className="ml-2">Logged in as: {abbreviateAddress(walletAddress)}</div>
-                <button onClick={handleLogout} className="btn btn-outline-light ml-2">
+                <div className="ml-2">{abbreviateAddress(walletAddress)}</div>
+                <button onClick={handleLogout} className="btn btn-outline-light ml-2 uprofile-btn">
                   Logout
                 </button>
               </div>

@@ -17,29 +17,60 @@ button.btn-primary {
   border-radius: 8px;
   cursor: pointer;
   margin-top: 20px;
+  border: 1px solid red;
 }
 
 /* Styles for the full-width content area */
 .full-width-div {
-  /*background-color: #000000;*/
+  background-color: #f8f8f8;
   padding: 20px;
   text-align: center;
 }
 
+/* Styles for the footer */
 
+
+
+
+/* Navigation Menu Styles */
+
+
+.bnav{
+  height: auto
+}
+.bnav .nav-link {
+  color: #fff;
+  text-decoration: none;
+  padding: 5px 10px;
+  transition: 0.3s;
+}
+
+.bnav .nav-link:hover {
+  background-color: rgba(1, 1, 1, 0.1);
+  border-radius: 5px;
+}
 
 /* User Profile Section Styles */
 .user-profile-section {
   color: #fff;
-  font-size: 14px;
+  font-size: 12px;
   display: flex;
   align-items: center;
+  margin-left: 10px;
+  width: auto;
+  /*border: 1px solid red;*/
   
-  margin-left: auto; /* Add this line to push the user profile section and logout button to the right */
 }
+
+.uprofile-btn{
+  margin-left: 5px;
+  /*border: 1px solid green;*/
+}
+
 
 /* Styles for the user profile image */
 .profile-image {
   width: 32px;
   height: 32px;
+  margin-right: 10px;
 }
