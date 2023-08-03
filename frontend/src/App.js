@@ -89,7 +89,7 @@ function App() {
             <Navbar.Brand href="#home">
               <img
                 alt=""
-                src="/img/logo.svg" // Replace with the URL of your logo image
+                src="/img/xrplogo.png" // Replace with the URL of your logo image
                 width="30"
                 height="30"
                 className="d-inline-block align-top"
