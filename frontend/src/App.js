@@ -84,12 +84,12 @@ function App() {
       {/* Footer */}
       <footer className="bg-dark text-white text-center py-2 fixed-bottom" style={{ height: '60px' }}>
         {/* Navigation Menu */}
-        <Navbar className="bg-body-tertiary">
+        <Navbar className="bg-body-tertiary bnav">
           <Container>
             <Navbar.Brand href="#home">
               <img
-                alt=""
-                src="/img/xrplogo.png" // Replace with the URL of your logo image
+                alt="logo"
+                src="xrpllogo.png" // Replace with the URL of your logo image
                 width="30"
                 height="30"
                 className="d-inline-block align-top"

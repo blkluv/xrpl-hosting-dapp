@@ -21,57 +21,12 @@ button.btn-primary {
 
 /* Styles for the full-width content area */
 .full-width-div {
-  background-color: #f8f8f8;
+  /*background-color: #000000;*/
   padding: 20px;
   text-align: center;
 }
 
-/* Styles for the footer */
-footer {
-  background-color: #000000;
-  color: #fff;
-  width: 100%;
-  position: absolute; /* Change position to absolute to take full width */
-  bottom: 0;
-  left: 0;
-}
 
-/* Navigation Menu Styles */
-.menu-nav {
-  height: 55px;
-  background-color: #0380fd;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.menu-list {
-  list-style: none;
-  display: flex;
-  margin: 0;
-  padding: 0;
-}
-
-.menu-item {
-  margin-right: 20px;
-  
-}
-
-.menu-item:last-child {
-  margin-right: 0;
-}
-
-.menu-item a {
-  color: #fff;
-  text-decoration: none;
-  padding: 5px 10px;
-  transition: 0.3s;
-}
-
-.menu-item a:hover {
-  background-color: rgba(255, 255, 255, 0.1);
-  border-radius: 5px;
-}
 
 /* User Profile Section Styles */
 .user-profile-section {
@@ -87,9 +42,4 @@ footer {
 .profile-image {
   width: 32px;
   height: 32px;
-}
-
-/* Add some space between menu items */
-.menu-item + .menu-item {
-  margin-left: 10px;
 }
