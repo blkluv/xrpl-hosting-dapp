@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
+import Instances from './components/Instances'; // Import the Instances component
+//import header from './components/header'
 import { isInstalled, getAddress } from '@gemwallet/api';
 import Container from 'react-bootstrap/Container';
 import Navbar from 'react-bootstrap/Navbar';
@@ -14,9 +16,13 @@ function App() {
     isInstalled().then((response) => {
       if (response.result.isInstalled) {
         getAddress().then((response) => {
-          console.log(`Your address: ${response.result?.address}`);
-          setWalletAddress(response.result?.address);
-          setGemWalletActive(true);
+          if (response.type === "response" && response.result?.address) {
+            console.log(`Your address: ${response.result.address}`);
+            setWalletAddress(response.result.address);
+            setGemWalletActive(true);
+          } else {
+            console.log("GemWallet connection failed or no wallet address returned.");
+          }
         });
       }
     });
@@ -35,12 +41,6 @@ function App() {
     });
   }, []);
 
-  const instances = [
-    { name: 'Small', price: 10 },
-    { name: 'Medium', price: 20 },
-    { name: 'Large', price: 30 },
-  ];
-
   // Helper function to abbreviate the wallet address
   const abbreviateAddress = (address) => {
     if (!address) return '';
@@ -50,6 +50,8 @@ function App() {
   };
 
   return (
+
+    //<header />
     <div className="App d-flex flex-column justify-content-between">
       {/* Top Fold */}
       <div className="d-flex flex-column align-items-center mt-5">
@@ -61,20 +63,10 @@ function App() {
         ) : (
           // Show the main content when GemWallet is active
           <div className="full-width-div">
-            <div className="container">
-              <div className="row justify-content-center">
-                <div className="col-md-12">
-                  <h2>Support Evernodes!</h2>
-                  <p>We are selling the following instances:</p>
-                  <ul>
-                    {instances.map((instance) => (
-                      <li key={instance.name}>
-                        {instance.name}: ${instance.price}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
+            <div className="main-content"> {/* Main content wrapper */}
+             <div className='Instacenter'>
+              <Instances /> {/* Use the Instances component here */}
+             </div>
             </div>
           </div>
         )}
@@ -99,7 +91,7 @@ function App() {
               <Nav.Link href="#about">About</Nav.Link>
               <Nav.Link href="#docs">Docs</Nav.Link>
               <Nav.Link href="https://github.com/your-repo" target="_blank" rel="noopener noreferrer">
-                GitHu
+                GitHub
               </Nav.Link>
             </Nav>
             {gemWalletActive && (

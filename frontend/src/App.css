@@ -1,8 +1,7 @@
 /* App.css */
+
 /* Styles for the top fold */
 .App {
-  position: relative;
-  top: 150px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -17,27 +16,19 @@ button.btn-primary {
   border-radius: 8px;
   cursor: pointer;
   margin-top: 20px;
-  border: 1px solid red;
 }
 
 /* Styles for the full-width content area */
 .full-width-div {
-  background-color: #f8f8f8;
   padding: 20px;
   text-align: center;
 }
 
 /* Styles for the footer */
-
-
-
-
-/* Navigation Menu Styles */
-
-
-.bnav{
-  height: auto
+.bnav {
+  height: auto;
 }
+
 .bnav .nav-link {
   color: #fff;
   text-decoration: none;
@@ -58,19 +49,61 @@ button.btn-primary {
   align-items: center;
   margin-left: 10px;
   width: auto;
-  /*border: 1px solid red;*/
-  
 }
 
-.uprofile-btn{
+.uprofile-btn {
   margin-left: 5px;
-  /*border: 1px solid green;*/
 }
-
 
 /* Styles for the user profile image */
 .profile-image {
   width: 32px;
   height: 32px;
   margin-right: 10px;
+}
+
+/* Instance Wrapper */
+.instance-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  position: relative;
+  left: 250px;
+}
+
+.instance-card {
+  flex-basis: 20%;
+  margin: 5px;
+}
+
+/* Media Queries */
+@media screen and (max-width: 1200px) {
+  .instance-wrapper {
+    left: 150px;
+  }
+}
+
+@media screen and (max-width: 992px) {
+  .instance-wrapper {
+    left: 100px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .instance-wrapper {
+    left: 0;
+    justify-content: flex-start;
+    padding: 0 20px;
+  }
+
+  .instance-card {
+    flex-basis: calc(50% - 10px);
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .instance-card {
+    flex-basis: 100%;
+  }
 }

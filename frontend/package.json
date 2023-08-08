@@ -1,6 +1,6 @@
 {
   "name": "xrpl-hosting-dapp",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "private": false,
   "dependencies": {
     "@gemwallet/api": "^3.4.0",

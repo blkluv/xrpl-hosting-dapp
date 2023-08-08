@@ -1,4 +1,4 @@
-# Yester - XRPL Hosting dApp v0.2.1
+# Yester - XRPL Hosting dApp v0.3.1
 
 XRPL Hosting dApp is a decentralized application (dApp) that provides hosting services for XRPL hooks. It allows users to purchase instances/servers and host XRPL hooks on the XRP Ledger.
 
