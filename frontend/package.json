@@ -1,18 +1,25 @@
 {
   "name": "xrpl-hosting-dapp",
   "version": "0.3.1",
-  "private": false,
   "dependencies": {
+    "@babel/plugin-syntax-flow": "^7.14.5",
+    "@babel/plugin-transform-react-jsx": "^7.14.9",
     "@gemwallet/api": "^3.4.0",
+    "@nextui-org/react": "^2.0.8",
+    "@popperjs/core": "^2.11.8",
+    "@testing-library/dom": "^7.21.4",
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^14.0.0",
     "@testing-library/user-event": "^14.4.3",
     "bootstrap": "^5.3.1",
+    "framer-motion": "^10.15.1",
     "react": "^18.2.0",
     "react-bootstrap": "^2.8.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.14.2",
     "react-scripts": "5.0.1",
+    "tailwindcss": "^3.3.3",
+    "typescript": "^3.7.0",
     "web-vitals": "^3.4.0"
   },
   "scripts": {
@@ -55,5 +62,7 @@
   "description": "XRPL Hosting dApp",
   "main": "src/index.js",
   "author": "meister <78353166+mworks-proj@users.noreply.github.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "repository": "https://github.com/mworks-proj/xrpl-hosting-dapp",
+  "packageManager": "yarn@3.6.1"
 }
