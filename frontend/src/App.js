@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 import Instances from './components/Instances'; // Import the Instances component
 //import header from './components/header'
